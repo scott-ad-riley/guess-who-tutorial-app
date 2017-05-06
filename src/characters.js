@@ -1,35 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react'
+import without from 'lodash/fp/without'
+import { connect } from 'react-redux'
+
 import Character from './character'
 
-import { guessCharacter } from './redux/actions'
+const Characters = ({ activeCharacters }) => (
+  <div>
+    {activeCharacters.map(
+      (character, idx) => (
+        <Character key={idx} name={character} />
+      )
+    )}
+  </div>
+)
 
-class Characters extends Component {
-  constructor(props) {
-    super(props)
-    this.renderCharacter = this.renderCharacter.bind(this)
-    this.alreadyGuessed = this.alreadyGuessed.bind(this)
-    this.onGuessCharacter = this.onGuessCharacter.bind(this)
+const mapStateToProps = ({ characters, guessedCharacters }) => (
+  {
+    activeCharacters: without(null, characters, ...guessedCharacters)
   }
+)
 
-  renderCharacter(character, idx) {
-    return <Character key={idx} character={character} onGuess={this.onGuessCharacter} />
-  }
-
-  onGuessCharacter(name) {
-    this.props.store.dispatch(guessCharacter(name))
-  }
-
-  alreadyGuessed(character) {
-    return this.props.store.getState().guessedCharacters.indexOf(character) === -1
-  }
-
-  render() {
-    return (
-      <div>
-        {this.props.store.getState().characters.filter(this.alreadyGuessed).map(this.renderCharacter)}
-      </div>
-    );
-  }
-}
-
-export default Characters;
+export default connect(mapStateToProps)(Characters);

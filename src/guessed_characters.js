@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react'
+import { connect } from 'react-redux'
 
-class GuessedCharacters extends Component {
-  render() {
-    return (
-      <div>
-        You have guessed: {this.props.characters.join(", ")}
-      </div>
-    );
+const GuessedCharacters = ({ characters }) => (
+  <div>
+    You have guessed: {characters.join(", ")}
+  </div>
+)
+
+const mapStateToProps = ({ guessedCharacters }) => (
+  {
+    characters: guessedCharacters
   }
-}
+)
 
-export default GuessedCharacters;
+export default connect(mapStateToProps)(GuessedCharacters)

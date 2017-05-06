@@ -1,27 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react'
+import { connect } from 'react-redux'
 
 import { restartGame } from './redux/actions'
 
-class GameOver extends Component {
-  constructor() {
-    super()
-    this.restartGame = this.restartGame.bind(this)
-  }
+const GameOver = ({ answer, attempts, restart}) => (
+  <div>
+    <h2>Correct!</h2>
+    <p>Answer: {answer}</p>
+    <p>Attempts: {attempts}</p>
+    <button onClick={restart}>Restart</button>
+  </div>
+)
 
-  restartGame() {
-    this.props.store.dispatch(restartGame())
+const mapStateToProps = ({ chosenCharacter, guessedCharacters }) => (
+  {
+    answer: chosenCharacter,
+    attempts: guessedCharacters.length
   }
+)
 
-  render() {
-    return (
-      <div>
-        <h2>Correct!</h2>
-        <p>Answer: {this.props.store.getState().chosenCharacter}</p>
-        <p>Attempts: {this.props.store.getState().guessedCharacters.length}</p>
-        <button onClick={this.restartGame}>Restart</button>
-      </div>
-    );
+const mapDispatchToProps = (dispatch) => (
+  {
+    restart: () => dispatch(restartGame())
   }
-}
+)
 
-export default GameOver;
+export default connect(mapStateToProps, mapDispatchToProps)(GameOver);

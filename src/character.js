@@ -1,24 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react'
+import { connect } from 'react-redux'
 
-class Character extends Component {
-  constructor() {
-    super()
-    this.onGuessCharacter = this.onGuessCharacter.bind(this)
+import { guessCharacter } from './redux/actions'
+
+const Character = ({ name, guessCharacter }) => (
+  <div>
+    Character: {name}
+    <button onClick={guessCharacter}>Guess</button>
+    <hr />
+  </div>
+)
+
+const mapDispatchToProps = (dispatch, ownProps) => (
+  {
+    guessCharacter: () => dispatch(guessCharacter(ownProps.name))
   }
+)
 
-  onGuessCharacter() {
-    this.props.onGuess(this.props.character)
-  }
-
-  render() {
-    return (
-      <div>
-        Character: {this.props.character}
-        <button onClick={this.onGuessCharacter}>Guess</button>
-        <hr />
-      </div>
-    );
-  }
-}
-
-export default Character;
+export default connect(null, mapDispatchToProps)(Character);
