@@ -7,12 +7,15 @@ class Characters extends Component {
     this.renderCharacter = this.renderCharacter.bind(this)
     this.alreadyGuessed = this.alreadyGuessed.bind(this)
   }
+
   renderCharacter(character, idx) {
     return <Character key={idx} character={character} onGuess={this.props.guessCharacter} />
   }
+
   alreadyGuessed(character) {
     return this.props.guessed.indexOf(character) === -1
   }
+  
   render() {
     return (
       <div>

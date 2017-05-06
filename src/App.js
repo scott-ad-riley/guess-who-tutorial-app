@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        Guess Who
+        <h1>Guess Who</h1>
         <GameBoard />
       </div>
     );
