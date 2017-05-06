@@ -1,8 +1,8 @@
-# Vanilla Redux and React Guess-Who
+# Full Redux and React Guess-Who
 
-This is the next step - moving our code out into a store and subscribing/dispatching actions to it.
+This is the final step - checkout the vanilla redux and react guess who if you've not seen redux before.
 
-This app does not have `react-redux` included, that library not only introduces bindings to allow the two libraries to work closer together, it also starts to enforce the full "react + redux" pattern (i.e. with `connect` and presentation/container components).
+If you have and are interested in more, this is the full implementation using pure/functional components and container components.
 
 Notes:
 
