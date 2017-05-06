@@ -12,7 +12,11 @@ class Characters extends Component {
   }
 
   renderCharacter(character, idx) {
-    return <Character key={idx} character={character} onGuess={this.props.guessCharacter} />
+    return <Character key={idx} character={character} onGuess={this.onGuessCharacter} />
+  }
+
+  onGuessCharacter(name) {
+    this.props.store.dispatch(guessCharacter(name))
   }
 
   alreadyGuessed(character) {
@@ -22,7 +26,7 @@ class Characters extends Component {
   render() {
     return (
       <div>
-        {this.props.characters.filter(this.alreadyGuessed).map(this.renderCharacter)}
+        {this.props.store.getState().characters.filter(this.alreadyGuessed).map(this.renderCharacter)}
       </div>
     );
   }

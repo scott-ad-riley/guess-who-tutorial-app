@@ -4,7 +4,7 @@ import { randomFrom } from '../random_from'
 import { characters } from '../../characters.json'
 
 
-export function guessPlayer(name) {
+export function guessCharacter(name) {
   return {
     type: GUESS_PLAYER,
     name: name

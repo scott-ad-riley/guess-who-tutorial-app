@@ -7,7 +7,7 @@ import reducer from './reducer'
 export const initialState = {
   characters: characters,
   guessedCharacters: [],
-  chosenCharacter: randomFrom(characters),
+  chosenCharacter: randomFrom(characters), // bit smelly, see README.md
   gameOver: false
 }
 
