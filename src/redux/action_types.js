@@ -1,0 +1,1 @@
+export const GUESS_PLAYER = "GUESS_PLAYER"
