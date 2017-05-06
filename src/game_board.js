@@ -1,24 +1,30 @@
-import React, { Component } from 'react';
-import Characters from './characters';
-import GuessedCharacters from './guessed_characters';
+import React from 'react'
+import { connect } from 'react-redux'
+
+import Characters from './characters'
+import GuessedCharacters from './guessed_characters'
 import GameOver from './game_over.js'
 
-class GameBoard extends Component {
-  render() {
-    if (this.props.store.getState().gameOver) {
-      return (
-        <div>
-          <GameOver store={this.props.store} />
-        </div>
-      )
-    }
+const GameBoard = ({ gameOver }) => {
+  if (gameOver) {
     return (
       <div>
-        <Characters store={this.props.store} />
-        <GuessedCharacters characters={this.props.store.getState().guessedCharacters} />
+        <GameOver />
       </div>
-    );
+    )
   }
+  return (
+    <div>
+      <Characters />
+      <GuessedCharacters />
+    </div>
+  );
 }
 
-export default GameBoard;
+const mapStateToProps = (state) => (
+  {
+    gameOver: state.gameOver
+  }
+)
+
+export default connect(mapStateToProps)(GameBoard);
