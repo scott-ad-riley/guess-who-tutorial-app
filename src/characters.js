@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Character from './character'
 
+import { guessCharacter } from './redux/actions'
+
 class Characters extends Component {
   constructor(props) {
     super(props)
     this.renderCharacter = this.renderCharacter.bind(this)
     this.alreadyGuessed = this.alreadyGuessed.bind(this)
+    this.onGuessCharacter = this.onGuessCharacter.bind(this)
   }
 
   renderCharacter(character, idx) {
@@ -13,9 +16,9 @@ class Characters extends Component {
   }
 
   alreadyGuessed(character) {
-    return this.props.guessed.indexOf(character) === -1
+    return this.props.store.getState().guessedCharacters.indexOf(character) === -1
   }
-  
+
   render() {
     return (
       <div>

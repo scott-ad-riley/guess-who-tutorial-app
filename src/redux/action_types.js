@@ -1,1 +1,2 @@
 export const GUESS_PLAYER = "GUESS_PLAYER"
+export const RESTART_GAME = "RESTART_GAME"
