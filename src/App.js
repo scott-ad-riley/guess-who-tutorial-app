@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <div>
         <h1>Guess Who</h1>
-        <GameBoard />
+        <GameBoard store={this.props.store} />
       </div>
     );
   }
