@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import GameBoard from './game_board'
 
 const App = () => (
@@ -6,6 +6,6 @@ const App = () => (
     <h1>Guess Who</h1>
     <GameBoard />
   </div>
-);
+)
 
-export default App;
+export default App

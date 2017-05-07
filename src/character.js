@@ -11,10 +11,8 @@ const Character = ({ name, guessCharacter }) => (
   </div>
 )
 
-const mapDispatchToProps = (dispatch, ownProps) => (
-  {
-    guessCharacter: () => dispatch(guessCharacter(ownProps.name))
-  }
-)
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  guessCharacter: () => dispatch(guessCharacter(ownProps.name)),
+})
 
-export default connect(null, mapDispatchToProps)(Character);
+export default connect(null, mapDispatchToProps)(Character)

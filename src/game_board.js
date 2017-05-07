@@ -5,8 +5,8 @@ import Characters from './characters'
 import GuessedCharacters from './guessed_characters'
 import GameOver from './game_over.js'
 
-const GameBoard = ({ gameOver }) => {
-  if (gameOver) {
+const GameBoard = props => {
+  if (props.gameOver) {
     return (
       <div>
         <GameOver />
@@ -18,13 +18,11 @@ const GameBoard = ({ gameOver }) => {
       <Characters />
       <GuessedCharacters />
     </div>
-  );
+  )
 }
 
-const mapStateToProps = (state) => (
-  {
-    gameOver: state.gameOver
-  }
-)
+const mapStateToProps = state => ({
+  gameOver: state.gameOver,
+})
 
-export default connect(mapStateToProps)(GameBoard);
+export default connect(mapStateToProps)(GameBoard)

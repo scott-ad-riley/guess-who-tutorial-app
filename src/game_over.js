@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { restartGame } from './redux/actions'
 
-const GameOver = ({ answer, attempts, restart}) => (
+const GameOver = ({ answer, attempts, restart }) => (
   <div>
     <h2>Correct!</h2>
     <p>Answer: {answer}</p>
@@ -12,17 +12,13 @@ const GameOver = ({ answer, attempts, restart}) => (
   </div>
 )
 
-const mapStateToProps = ({ chosenCharacter, guessedCharacters }) => (
-  {
-    answer: chosenCharacter,
-    attempts: guessedCharacters.length
-  }
-)
+const mapStateToProps = ({ chosenCharacter, guessedCharacters }) => ({
+  answer: chosenCharacter,
+  attempts: guessedCharacters.length,
+})
 
-const mapDispatchToProps = (dispatch) => (
-  {
-    restart: () => dispatch(restartGame())
-  }
-)
+const mapDispatchToProps = dispatch => ({
+  restart: () => dispatch(restartGame()),
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameOver);
+export default connect(mapStateToProps, mapDispatchToProps)(GameOver)
