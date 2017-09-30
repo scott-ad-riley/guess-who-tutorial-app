@@ -8,7 +8,7 @@ Notes:
 
 * our initial state in `src/redux/store.js` will regenerate a new random character each time that we ask for the initial state. This shouldn't ever happen however - even if we dispatch an unrecognised action, we will just return the current store, not reset it to initial.
 
-## Next Steps
+## Next Steps
 
 These are just some ideas around adding extra functionality to the app
 
